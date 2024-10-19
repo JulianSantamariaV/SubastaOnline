@@ -22,7 +22,7 @@ namespace WebApplication1.Controllers
             var subasta = subastaRepositorio.ObtenerProyecto().ToList();
             var modelo = new HomeIndexViewModel() { Subastas = subasta };
             return View(modelo);
-        }        
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
