@@ -9,84 +9,37 @@
 
         <div class="carousel slide" id="myCarousel">
             <div class="carousel-inner">
-                <div class="item active">
-                    <ul class="thumbnails">
-                        @foreach (var subasta in Model)
-                        {
-                            <li class="col-sm-3">
-                                <div class="fff">
-                                    <div class="thumbnail">
-                                        <a href="#"><img src="@subasta.ImgUrl" alt=""></a>
+                @for (int i = 0; i < Model.Count(); i += 4) // Avanza de 4 en 4
+                {
+                    var subastasToShow = Model.Skip(i).Take(4); // Toma los siguientes 4 elementos
+                    <div class="item @(i == 0 ? "active" : "")">                       
+                        <ul class="thumbnails">
+                            @foreach (var subasta in subastasToShow)
+                            {
+                                <li class="col-sm-3">
+                                    <div class="fff">
+                                        <div class="thumbnail">
+                                            <a href="#"><img src="@subasta.ImgUrl" alt=""></a>
+                                        </div>
+                                        <div class="caption">
+                                            <h4>@subasta.Titulo</h4>
+                                            <p>@subasta.Descripcion</p>
+                                            <a class="btn btn-mini" href="#">» Read More</a>
+                                        </div>
                                     </div>
-                                    <div class="caption">
-                                        <h4>@subasta.Titulo</h4>
-                                        <p>@subasta.Descripcion</p>
-                                        <a class="btn btn-mini" href="#">» Read More</a>
-                                    </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div><!-- /Slide1 -->
-                <div class="item">
-                    <ul class="thumbnails">
-                        <li class="col-sm-3">
-                            <div class="fff">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                </div>
-                                <div class="caption">
-                                    <h4>Praesent commodo</h4>
-                                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                    <a class="btn btn-mini" href="#">» Read More</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-                            <div class="fff">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                </div>
-                                <div class="caption">
-                                    <h4>Praesent commodo</h4>
-                                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                    <a class="btn btn-mini" href="#">» Read More</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-                            <div class="fff">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                </div>
-                                <div class="caption">
-                                    <h4>Praesent commodo</h4>
-                                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                    <a class="btn btn-mini" href="#">» Read More</a>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="col-sm-3">
-                            <div class="fff">
-                                <div class="thumbnail">
-                                    <a href="#"><img src="http://placehold.it/360x240" alt=""></a>
-                                </div>
-                                <div class="caption">
-                                    <h4>Praesent commodo</h4>
-                                    <p>Nullam Condimentum Nibh Etiam Sem</p>
-                                    <a class="btn btn-mini" href="#">» Read More</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
 
+                    <!-- /Slide -->
+                }
+            </div>
 
             <nav>
                 <ul class="control-box pager">
                     <li><a data-slide="prev" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-left"></i></a></li>
-                    <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></li>
+                    <li><a data-slide="next" href="#myCarousel" class=""><i class="glyphicon glyphicon-chevron-right"></i></a></li>
                 </ul>
             </nav>
             <!-- /.control-box -->
@@ -95,4 +48,4 @@
 
     </div><!-- /.col-xs-12 -->
 
-</div><!-- /.container --> 
+</div><!-- /.container -->
